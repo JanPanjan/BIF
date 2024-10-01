@@ -1,5 +1,7 @@
 # Matlab
 
+Documentation: [docs](https://www.mathworks.com/help/matlab/learn_matlab/array-indexing.html) 
+
 Kot da bi delal s python interactive environment. Pišeš spremenljivke in vrednosti. 
 Interpreted language (tipi niso potrebni pri inicializaciji spremenljivk).
 
