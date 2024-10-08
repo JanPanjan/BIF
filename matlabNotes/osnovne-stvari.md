@@ -2,9 +2,21 @@
 
 Plus, minus, deljeno krat = +, -, /, *.
 
-# Osnovne strukture
+Komentar : `%`
 
-## Arrays
+Print funkcija: `disp(x)`. Če hočeš printat več vrednosti, printaj
+array (glej dol za arrays).
+
+    >> x = 1
+    >> y = 2
+    >> disp([x, y])
+    "1" "2"
+
+Lahko tudi `fprintf()` iz C-ja (verjetno je matlab built on top of C).
+
+## Osnovne strukture
+
+### Arrays
 
 Z oklepaji `[]`  naredimo arrays. Lahko jih tudi *concatenatamo* v nove arraye
 ali matrike.
@@ -32,12 +44,13 @@ kar npr. naredi:
 
 ### Operacije z arrayi in matrikami
 
-Tako kot v R-ju dela `matrika + 1` enako (tudi `vektor + 1`). Prav tako funkcije, npr. `sin(matrika)`.
+Tako kot v R-ju dela `matrika + 1` enako (tudi `vektor + 1`). Prav tako funkcije,
+npr. `sin(matrika)`
 
 Znak `'` transponira matriko (`matrika'`).
 
-*Element wise operation* izvedeš s pikico `.`. Npr. imaš matriko `a = [1,2;2,3]`. 
-Če pišemo `a*a`, izvede `množenje matrik`. Da pa množimo 1 z 1, 2 z 2 in 3 z 3, pišemo 
+*Element wise operation* izvedeš s pikico `.`. Npr. imaš matriko `a = [1,2;2,3]`.
+Če pišemo `a*a`, izvede `množenje matrik`. Da pa množimo 1 z 1, 2 z 2 in 3 z 3, pišemo
 `a.*a`. Torej elemente na istih indeksih množimo.
 
 ### Dostopanje elementov arraya
@@ -68,15 +81,14 @@ da vzame 1 do 2 row ter 2 column:
     >> a(1:2, 2)
          rows,col
 
-Dostopanje do stolpca s praznim intervalom. To pomeni, da naj vzame vrstico 3 
+Dostopanje do stolpca s praznim intervalom. To pomeni, da naj vzame vrstico 3
 in vse stolpce v matriki a:
 
     >> a(3, :)
 
-
 ### Dodajanje elementov v array
 
-Če hočeš dat element na indeks, ki je out of bounds, se posodobi matrika/array 
+Če hočeš dat element na indeks, ki je out of bounds, se posodobi matrika/array
 in nova vrednost se doda. Prav tako se zafila z 0, tam kjer nismo dali
 elementov.
 
@@ -86,3 +98,10 @@ Imajo realno in imaginarno komponento. Npr. `1+2i`. Ustvariš jih:
 
     <Re>+<Im>i
 
+## Loops
+
+    for i = 1:10
+        disp(i)
+    end
+
+Ustvari variable `i`, ki se začne z 1 in veča dokler ni enaka 10.
