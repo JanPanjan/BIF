@@ -7,6 +7,7 @@ scatter(x,y,50,'red','filled'); % size, color, filled
 
 % fit function through data points
 [f fo]=fit(x,y,'poly3'); % 3rd order > cubic function
+% [f fo]=fit(x,y,'poly4'); % 3rd order > cubic function
 
 % get function
 formula(f);
@@ -16,9 +17,11 @@ a = cv(1);
 b = cv(2);
 c = cv(3);
 d = cv(4);
+% e = cv(5);
 
 syms X
 myfun = @(X) a.*X.^3 + b.*X.^2 + c.*X + d;
+% myfun = @(X) a.*X.^4 + b.*X.^3 + c.*X^2 + d.*X + e;
 
 % plot fitted curve
 hold on
