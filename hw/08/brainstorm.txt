@@ -1,0 +1,39 @@
+zdej se vsi pomikajo naključjo v vse smeri. če uvedemo vpliv vetra, to pomeni, da je
+treba vsakemu modifiyat x in y koordinati glede na kot pod katerim piha in kako močno
+piha veter.
+
+    kot vetra, moč vetra
+
+ali sta moč in veter neodvisna? močnejši veter ne spremeni smeri vetra in smer vetra ne
+spremeni moči vetra. oba parametra pa vplivata na naše koordinate.
+
+---- kot vetra ----
+
+vrednosti so med 0 in 359, 360 je enako 0 (modus?).
+basic primer: veter piha pod kotom 0 stopinj - piha iz severa na jug. to pomeni, da se
+x vrednosti ne spremenijo, medtem ko vpliva na y vrednosti, tako da vse malo zmanjša.
+za koliko se zmanjšajo, je odvisno od...
+
+---- moč vetra ----
+
+vrednosti bodo med 1 in 10, kjer 1 pomeni, da ni vetra in 10, najmočnejši veter možno, ki
+najbolj vpliva na koordinati delcev. zakaj 1 in 10? ker nameravam množiti koordinati s
+to številko in množiti z 0 bi uničilo podatke, medtem ko če bi dali npr. moč 0.5, bi se
+koordinate zmanjšale. zato bo med 1 in 10 for now, razen če se premislim.
+
+---- kot vetra (nadaljevanje) ----
+
+primer, ko je kot 0 ali 360 je opisan zgoraj. še en enostaven primer: kot je 90, kar pomeni,
+da veter piha iz vzhoda na zahod in ne vpliva na y vrednosti, samo na x tako, da jih
+zmanjša, da bodo delci postavljeni bolj v levo.
+
+---- kaj pa za nek poljuben x kot? ----
+
+za kote, ki vplivajo na x in y, je treba izdelati neko formulo, ki bo izračunala za koliko
+se mora spremeniti x v primerjavi z y. npr. za kot 225, se spremenita x in y, toda se oba
+spremenita za enak delež v pozitivno smer, medtem ko se za kot 45 prav tako enako spremenita,
+a v negativno smer. podobno je za 315, kjer se x dvigne in y zniža (obratno za 135) za enak
+delež. 
+
+=== IDEJA ===
+Mislim da je treba najti neko razmerje med x in y; pomisli na krožnico in sin in cos.
