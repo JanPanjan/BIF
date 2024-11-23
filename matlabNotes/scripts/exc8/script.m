@@ -1,7 +1,7 @@
 clear 
 close
 % define number of steps and number of particles
-Nstep = 100; % number of steps
+Nstep = 10; % number of steps
 Np = 1; % number of particles
 %
 cMax = 0; % save abs max coordinate for x and y limits / plot

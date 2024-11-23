@@ -9,7 +9,17 @@ last_pos = zeros(n_par, 2);
 % save absolute coordinate for x and y limits in plot
 c_max = 0;
 
-% for every particle calculate and plot its position
+% get user input for wind direction and wind intensity
+disp("tvoja")
+wind_dir = input("Enter wind direction [degrees]: ");
+wind_str = input("Enter wind strength: ");
+
+% function makes a random number in interval [-1,1]
+function r = gen_rand_num()
+    r = 2 * rand - 1;
+end
+
+% for every particle it calculates and plots its position
 figure
 hold on
 for p = 1 : n_par
@@ -22,10 +32,39 @@ for p = 1 : n_par
     y = 0;
 
     for s = 1 : n_step
-        % calculate x and y coordinate and store it in array
-        % random value in [-1,1], since rand gives values in [0,1]
-        x = x + 2 * rand - 1;
-        y = y + 2 * rand - 1;
+        % [[ calculate x and y coordinate ]] 
+
+        % wind_str is used to to make the step bigger in general.
+        % Adds alpha to "normalize" inputs (0 means step will be coordinate 0)
+        % (alpha was chosen through experimentation with different values).
+        % Takes the absolute value of wind strength, to handle negative
+        % values passed by the user.
+        alpha = 0.3;
+        str_influence = abs(wind_str) * alpha;
+        
+        % wind_dir is used with sin and cos to get x and y, respectively, to
+        % make x and y bigger or smaller (or nothing) based on wind diretion.
+        % Since sin and cos accept radians, the degree of angle passed as
+        % wind_dir has to be converted first.
+        %     e.g. wind_dir = 0 => North to South => all x coordinates get 
+        %     smaller, while y coordinates don't change
+
+        % Strength influence 0 means that no external force from wind is
+        % affecting our particles, therefore angle influence will be put to
+        % 0 by multiplication.
+        wind_dir_rad = deg2rad(wind_dir);
+        ang_influence_x = sin(wind_dir_rad) * str_influence;
+        ang_influence_y = cos(wind_dir_rad) * str_influence;
+
+        % get_rand_num makes a random number, that gets added to base
+        % coordinates (0,0). Angle influence is subtracted, since sin and
+        % cos point IN the wind direction. To make a particle move in the
+        % opposite direction, the values are reversed.
+        x = x + gen_rand_num() - ang_influence_x;
+        y = y + gen_rand_num() - ang_influence_y;
+
+        % x = x + 2 * rand - 1;
+        % y = y + 2 * rand - 1;
         position(s, 1) = x;
         position(s, 2) = y;
     end

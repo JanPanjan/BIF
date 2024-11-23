@@ -37,3 +37,5 @@ delež.
 
 === IDEJA ===
 Mislim da je treba najti neko razmerje med x in y; pomisli na krožnico in sin in cos.
+sin odloča kje je x glede na nek kot, cos odloča kje je nek y glede na nek kot, boom.
+done. (ali to dela tho)
