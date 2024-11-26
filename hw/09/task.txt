@@ -1,0 +1,8 @@
+1. Fourier's law of heat conduction
+2. Fourier's law in steady state
+
+Hočemo toliko iteracij, da bo na koncu linearna odvisnost med temperaturo in
+`rod length`. Več iteracij, bolj se graf zravna. Also mora bit animirano
+(drawnow ukaz?...). Za 2D moraš vsako iteracijo zračunat vrednost za vsak 
+pixel v gridu - neki s sosedi; 1D dva soseda, zato deli z dva; 2D 4 sosedi,
+zato deli s 4.
