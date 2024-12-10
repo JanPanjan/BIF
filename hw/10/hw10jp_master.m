@@ -26,10 +26,6 @@ H2_x_L = O2_x - 0.2;  H2_y_L = O2_y - 0.2;
 H2_x_R = O2_x + 0.2;  H2_y_R = O2_y - 0.2;
 
 % [ CALCULATE ELECTROSTATIC POTENTIAL FOR EACH PARTICLE ]
-% Values for system of observation electrostatic 
-% potential will be stored in this array
-V = zeros(size(x_grid));
-
 % Electrostatic potential for every particle will be calculated with calculate_potential function
 % Params:
 %     x_grid, y_grid: mesh grid coordinates
@@ -38,7 +34,7 @@ V = zeros(size(x_grid));
 %     K: Coulomb's constant (beginning of script)
 %     r: radius of particle, where potential is constant
 % Returns: 
-%     2D array, where V_particle is particle potential and inside_x are points inside of particle radius
+%     array, where V_particle is particle potential
 function [V_particle] = calculate_potential(x_grid, y_grid, x_p, y_p, q, K, r)
     % Calculates displacement - distance between 
     % each grid point and particle position for R
@@ -77,6 +73,11 @@ V_H20_2 = V_O2 + V_H2_L + V_H2_R;
 % [ CALCULATE SYSTEM OF OBSERVATION ELECTROSTATIC POTENTIAL ]
 % Sum of all electrostatic potentials
 V = V_H20_1 + V_H20_2;
+
+% e.g. why this is needed
+% V = V_H20_1;
+% V = V_H20_2;
+% V = zeros(size(x_grid));
 
 
 % [[ PLOT ]]
