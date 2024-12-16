@@ -1,5 +1,8 @@
 
-function [V_particle] = calculate_potential_3D(x_grid, y_grid, z_grid, x_p, y_p, z_p, q, K, r)
+function [V_particle] = calculate_potential_3D(x_grid, y_grid, z_grid, x_p, y_p, z_p, q)
+    K = 1 / (4 * pi * 8.85e-12); % electrostatic constant
+    r = 0.1;                     % particle radius
+
     % Calculates displacement - distance between 
     % each grid point and particle position for R
     x_dis = x_p - x_grid;

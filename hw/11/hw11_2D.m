@@ -10,7 +10,6 @@ data = table2array(data(:, 2:5));
 % Find min and max coordinates for grid bounds
 x_min = min(data(:,1)); x_max = max(data(:,1));
 y_min = min(data(:,2)); y_max = max(data(:,2));
-z_min = min(data(:,3)); z_max = max(data(:,2));
 % Define a vector for grid
 X = x_min - 1 : 0.02 : x_max + 1;
 Y = y_min - 1 : 0.02 : y_max + 1;
@@ -29,7 +28,7 @@ r = 0.1;
 % [[ CALCULATE POTENTIALS ]]
 % get potential for every particle (10 rows = 10 parcticles)
 % calculate_potential_3D returns potential of charge
-for i = 1 : size(data)
+for i = 1 : size(data,1)
     V = V + calculate_potential_2D(x_grid, y_grid, data(i,1), data(i,2), data(i,4), K, r);
 end
 

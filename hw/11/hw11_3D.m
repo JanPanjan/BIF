@@ -22,30 +22,38 @@ Z = z_min - 1 : 0.02 : z_max + 1;
 % [[ VARIABLES ]]
 % sum of all potentials
 V = zeros(size(x_grid));
-V2D = V(:,:,50);
-V2 = squeeze(V2D);
-% electrostatic constant
-K = 1 / (4 * pi * 8.85e-12);
-r = 0.1;
+
 
 
 % [[ CALCULATE POTENTIALS ]]
 % get potential for every particle (10 rows = 10 parcticles)
 % calculate_potential_3D returns potential of charge
-for i = 1 : size(data)
-    V = V + calculate_potential_3D(x_grid, y_grid, z_grid, data(i,1), data(i,2), data(i,3), data(i,4), K, r);
+for i = 1 : size(data, 1)
+    V = V + calculate_potential_3D(x_grid, y_grid, z_grid, data(i,1), data(i,2), data(i,3), data(i,4));
 end
 
 
 % [[ PLOT ]]
 figure
-% isosurface(x_grid, y_grid, z_grid, V, 1.0e-10, 'r')
-% hold on
-% isosurface(x_grid, y_grid, z_grid, V, 1.0e-9, 'g')
-% isosurface(V2, 1.0e-9, 'g')
-isosurface(V2D, 1.0e-10, 'g')
-% hold on
-% isosurface(x_grid, y_grid, z_grid, V, -1.0e-10, 'b')
+
+% 10% of max/min positive potential
+max_10 = max(V(:)) * 0.1;
+min_10 = min(V(:)) * 0.1; 
+
+isosurface(x_grid, y_grid, z_grid, V, max_10); 
+colormap jet;
+
+% Plot positive potential isosurfaces
+patch_1 = patch(isosurface(x_grid, y_grid, z_grid, V, max_10));
+set(patch_1, 'FaceColor', 'red', 'EdgeColor', 'none', 'FaceAlpha', 0.7);
+
+% Plot negative potential isosurfaces
+patch_2 = patch(isosurface(x_grid, y_grid, z_grid, V, min_10));
+set(patch_2, 'FaceColor', 'blue', 'EdgeColor', 'none', 'FaceAlpha', 0.7);
+
+% Plot zero-level surface (green background)
+patch_3 = patch(isosurface(x_grid, y_grid, z_grid, V, 0));
+set(patch_3, 'FaceColor', 'green', 'EdgeColor', 'none', 'FaceAlpha', 0.3);
 
 ax=gca;
 axis(ax,'equal')
