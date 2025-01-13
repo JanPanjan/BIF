@@ -1,13 +1,10 @@
-
 function [V_particle] = calculate_potential_2D(x_grid, y_grid, x_p, y_p, q, K, r)
     % Calculates displacement - distance between 
     % each grid point and particle position for R
     x_dis = x_p - x_grid;
     y_dis = y_p - y_grid;
-    % z_dis = z_p - z_grid;
 
     % Calculates distance between each grid point and the particle with Pythagoream's theorem
-    % R = sqrt( x_dis.^2 + y_dis.^2 + z_dis.^2 );
     R = sqrt( x_dis.^2 + y_dis.^2 );
 
     % Calculates particle potential using formula V = qk/r (check params), where r is R

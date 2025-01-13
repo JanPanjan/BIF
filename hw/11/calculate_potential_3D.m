@@ -1,7 +1,7 @@
-
 function [V_particle] = calculate_potential_3D(x_grid, y_grid, z_grid, x_p, y_p, z_p, q)
-    K = 1 / (4 * pi * 8.85e-12); % electrostatic constant
-    r = 0.1;                     % particle radius
+    K = 1 / (4 * pi * 8.85e-12);         % electrostatic constant
+    r = 0.08;                            % particle radius
+    q_corrected = -1.6*10^(-19)*q;       % uhh
 
     % Calculates displacement - distance between 
     % each grid point and particle position for R
@@ -14,12 +14,12 @@ function [V_particle] = calculate_potential_3D(x_grid, y_grid, z_grid, x_p, y_p,
 
     % Calculates particle potential using formula V = qk/r (check params), where r is R
     % This is how much the particle contributes to system of obervation's(?) electrostatic potential
-    V_particle = (q * K) ./ R;
+    V_particle = (q_corrected * K) ./ R;
 
     % Gets points inside (or near) of the particle, where potential is constant
     id = (R < r);
     % Calculates maximum potential found in this area
-    V_max = (q * K) / r;
+    V_max = -K * q / r; % spremenil v -K
     % Sets values of potentials inside of the particle to this value
     V_particle(id) = V_max;
 end

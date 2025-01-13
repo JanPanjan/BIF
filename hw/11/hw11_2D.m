@@ -35,20 +35,19 @@ end
 
 % [[ PLOT ]]
 figure
-contourf(x_grid, y_grid, V, 100, ':', 'LineWidth', 1)
+contourf(x_grid, y_grid, V, 200, ':', 'LineWidth', 1)
 colormap(jet)
 ax=gca;
 axis(ax,'equal')
 
 figure
-contour(x_grid, y_grid, V, 100, ':', 'LineWidth', 1)
+contour(x_grid, y_grid, V, 200, ':', 'LineWidth', 1)
 colormap(jet)
 ax=gca;
 axis(ax,'equal')
 
 figure
-contourf(x_grid, y_grid, V, 100, 'LineStyle', 'none')
+contourf(x_grid, y_grid, V, 200, 'LineStyle', 'none')
 colormap(jet)
-hold on
 ax=gca;
 axis(ax,'equal')

@@ -6,8 +6,7 @@ figure
 scatter(x,y,50,'red','filled'); % size, color, filled
 
 % fit function through data points
-[f fo]=fit(x,y,'poly3'); % 3rd order > cubic function
-% [f fo]=fit(x,y,'poly4'); % 3rd order > cubic function
+[f, fo]=fit(x,y,'poly3'); % 3rd order > cubic function
 
 % get function
 formula(f);

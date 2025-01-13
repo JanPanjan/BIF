@@ -7,8 +7,8 @@ function res = pogladkaj(vec, window_size)
         return
     end
 
-    res = NaN(vec_len, 1); % vektor za rezultate
-    utezi = NaN(window_size, 1); % vektor za uteži
+    res = NaN(vec_len, 1);          % vektor za rezultate
+    utezi = NaN(window_size, 1);    % vektor za uteži
     middle = ceil(window_size / 2); % sredina weights (ali window)
 
     % izračunamo weights s pomočjo fibonacci funkcije
@@ -37,8 +37,8 @@ end
 % Preberemo in pripravimo podatke
 temp = readtable('data.csv');
 data = table2array(temp);
-t = data(:, 1); % time
-x = data(:, 2); % displacement
+t = data(:, 1);   % time
+x = data(:, 2);   % displacement
 dt = t(2) - t(1); % neka razlika idk
 
 % Uporabimo funkcijo, da dobimo nove poglajene podatke.
